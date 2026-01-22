@@ -121,7 +121,7 @@ This step converts raw unstructured logs into structured JSON lines for ingestio
 ```bash
 python kafka_producer.py producer_1 8000
 
-```'
+```
 Exposes Prometheus metrics on: http://<container>:8000/metrics
 Sends messages to Kafka topic: web_topic
 
