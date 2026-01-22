@@ -73,7 +73,7 @@ docker compose up -d
 
 ```
 
-2) Open UIs
+###  2) Open UIs
 Kibana: http://localhost:5601
 Grafana: http://localhost:3000
  (default: admin / admin)
@@ -87,7 +87,7 @@ Running the pipeline
 
 All scripts are run inside the script-runner container (it mounts your repo at /app).
 
-1) Enter the script-runner container
+###  1) Enter the script-runner container
 
 ```bash
 docker exec -it script-runner bash
@@ -95,7 +95,7 @@ cd /app
 
 ```
 
-2) Create the Elasticsearch index (one-time)
+###  2) Create the Elasticsearch index (one-time)
 
 ```bash
 python create_index.py
@@ -103,7 +103,7 @@ python create_index.py
 ```
 This creates an index (default: web_logs) with mappings (IP, timestamp, method, url, status, bytes, referrer, user_agent) and sets shards/replicas.
 
-3) Preprocess raw logs into JSONL
+###  3) Preprocess raw logs into JSONL
 
 ```bash
 python preprocess_logs.py
@@ -116,7 +116,7 @@ Output:
 
 This step converts raw unstructured logs into structured JSON lines for ingestion.
 
-4) Start the Kafka producer (streams JSON logs)
+###  4) Start the Kafka producer (streams JSON logs)
    
 ```bash
 python kafka_producer.py producer_1 8000
@@ -125,7 +125,7 @@ python kafka_producer.py producer_1 8000
 Exposes Prometheus metrics on: http://<container>:8000/metrics
 Sends messages to Kafka topic: web_topic
 
-5) Start Kafka consumers (index into Elasticsearch)
+###  5) Start Kafka consumers (index into Elasticsearch)
 
 ```bash
 Run these in separate terminals (or separate docker exec sessions):
