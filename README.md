@@ -74,7 +74,6 @@ docker compose up -d
 ```
 
 2) Open UIs
-3) 
 Kibana: http://localhost:5601
 Grafana: http://localhost:3000
  (default: admin / admin)
